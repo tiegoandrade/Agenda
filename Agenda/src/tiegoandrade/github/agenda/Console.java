@@ -7,10 +7,12 @@ import java.io.InputStreamReader;
 /**
  * Utilizada para ler os dados do console.
  * 
+ * @version 1.0 18-08-2016
  * @author Tiego
- *
+ * 
  */
 public class Console {
+	
 	/**
 	 * Lê uma string digitada pelo usuário no console.
 	 * 
@@ -55,5 +57,4 @@ public class Console {
 			throw new RuntimeException(str + " não é um inteiro válido");
 		}
 	}
-
 }

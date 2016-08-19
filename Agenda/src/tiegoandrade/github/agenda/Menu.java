@@ -1,5 +1,12 @@
 package tiegoandrade.github.agenda;
 
+/**
+ * Classe que representa o menu da aplicação.
+ * 
+ * @version 1.0 18-08-2016
+ * @author Tiego
+ *
+ */
 public class Menu {
 
 	/** Constantes relacionadas às opções de menu. */
@@ -14,7 +21,7 @@ public class Menu {
 	 * Exibe as opções do menu e aguarda a escolha do usuário.
 	 * 
 	 * @return Opção escolhida.
-	 * @throws AgendaException
+	 * @throws AgendaException Lançada se for digitada uma opção inexistente.
 	 */
 	public int exibirOpcoes() throws AgendaException {
 		System.out.println("--- MENU DE OPÇÕES ---");
@@ -32,7 +39,6 @@ public class Menu {
 		if (opcao > OPCAO_SAIR || opcao < OPCAO_INSERIR) {
 			throw new AgendaException("Opção Inválida");
 		}
-
 		return opcao;
 	}
 }

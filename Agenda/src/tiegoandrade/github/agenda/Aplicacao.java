@@ -6,8 +6,9 @@ import java.util.List;
 /**
  * Classe que possibilita a interação do usuário com a agenda.
  * 
+ * @version 1.0 18-08-2016
  * @author Tiego
- *
+ * 
  */
 public class Aplicacao {
 
@@ -20,10 +21,9 @@ public class Aplicacao {
 	/**
 	 * Inicia a aplicação
 	 * 
-	 * @throws IOException
+	 * @throws IOException Lançada se ocorrer alguma exceção de entrada e saída.
 	 */
 	public void iniciar() throws IOException {
-
 		menu = new Menu();
 		agenda = new Agenda();
 		int opcao = 0;
@@ -40,15 +40,19 @@ public class Aplicacao {
 				case Menu.OPCAO_INSERIR:
 					inserir();
 					break;
+				
 				case Menu.OPCAO_ALTERAR:
 					alterar();
 					break;
+				
 				case Menu.OPCAO_EXCLUIR:
 					excluir();
 					break;
+				
 				case Menu.OPCAO_LISTAR_LETRA:
 					listarPorLetra();
 					break;
+				
 				case Menu.OPCAO_PROCURAR:
 					procurar();
 					break;
@@ -64,18 +68,18 @@ public class Aplicacao {
 	/**
 	 * Insere os dados de um contato.
 	 * 
-	 * @throws AgendaException
-	 * @throws IOException
+	 * @throws AgendaException Lançada caso o contato já existir na lista. 
+	 * @throws IOException Lançada se ocorrer alguma exceção de entrada e saída.
 	 */
 	private void inserir() throws AgendaException, IOException {
 
-		// Solicita os dados.
+		// Solicita os dados do contato.
 		System.out.print("Nome: ");
 		String nome = Console.readString();
 		System.out.print("Telefone: ");
 		String telefone = Console.readString();
 
-		// Cria o contato e o insere na coleção.
+		// Cria o contato e o insere na agenda.
 		Contato contato = new Contato(nome, telefone);
 		agenda.inserir(contato);
 
@@ -86,12 +90,12 @@ public class Aplicacao {
 	/**
 	 * Altera os dados de um contato.
 	 * 
-	 * @throws AgendaException
-	 * @throws IOException
+	 * @throws AgendaException Lançada caso o contato não exista na lista.
+	 * @throws IOException Lançada se ocorrer alguma exceção de entrada e saída.
 	 */
 	private void alterar() throws AgendaException, IOException {
 
-		// Solicita os dados.
+		// Solicita os dados do contato.
 		System.out.print("Nome: ");
 		String nome = Console.readString();
 		System.out.print("Telefone: ");
@@ -108,12 +112,12 @@ public class Aplicacao {
 	/**
 	 * Exclui os dados de um contato.
 	 * 
-	 * @throws AgendaException
-	 * @throws IOException
+	 * @throws AgendaException Lançada caso o contato não exista na lista.
+	 * @throws IOException Lançada se ocorrer alguma exceção de entrada e saída.
 	 */
 	private void excluir() throws AgendaException, IOException {
 
-		// Solicita os dados.
+		// Solicita os dados do contato.
 		System.out.print("Nome: ");
 		String nome = Console.readString();
 
@@ -125,7 +129,7 @@ public class Aplicacao {
 	}
 
 	/**
-	 * Lista os dados de um contato que começa com determinada letra.
+	 * Lista os dados de um contato que começam com determinada letra.
 	 * 
 	 * @throws AgendaException
 	 */
@@ -183,7 +187,6 @@ public class Aplicacao {
 				System.out.println(contato);
 			}
 		}
-
 		System.out.println();
 	}
 }

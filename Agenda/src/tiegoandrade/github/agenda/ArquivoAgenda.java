@@ -12,24 +12,23 @@ import java.util.Scanner;
 /**
  * Classe que manipula o arquivo onde os registros da agenda serão armazenados.
  * 
+ * @version 1.0 18-08-2016
  * @author Tiego
- *
+ * 
  */
 public class ArquivoAgenda {
 
-	/** Constanto com o nome do arquivo da agenda. */
+	/** Constante com o nome do arquivo da agenda. */
 	private static final String ARQUIVO_AGENDA = "agenda.txt";
 
 	/**
 	 * Grava os contatos no arquivo que representa a agenda.
 	 * 
-	 * @param contatos
-	 *            É uma coleção dos contatos que serão gravados no arquivo que
-	 *            representa a agenda.
-	 * @throws IOException
+	 * @param contatos É uma coleção dos contatos que serão gravados no arquivo que
+	 *            	   representa a agenda.
+	 * @throws IOException Lançada se ocorrer alguma exceção de entrada e saída.
 	 */
 	public void gravar(Collection<Contato> contatos) throws IOException {
-
 		try (PrintWriter writer = new PrintWriter(ARQUIVO_AGENDA)) {
 			for (Contato contato : contatos) {
 				writer.print(contato.getNome());
@@ -40,14 +39,14 @@ public class ArquivoAgenda {
 	}
 
 	/**
-	 * Lê os contatos que se encontra no arquivo.
+	 * Lê os contatos que se encontram no arquivo.
 	 * 
-	 * @return
+	 * @return Uma lista de contatos.
 	 */
 	public List<Contato> ler() {
-
 		List<Contato> contatos = new ArrayList<Contato>();
-
+		
+		// Lê o arquivo que representa a agenda.
 		try (Scanner scanner = new Scanner(new File(ARQUIVO_AGENDA))) {
 			while (scanner.hasNextLine()) {
 				String contatoStr = scanner.nextLine();
@@ -55,7 +54,6 @@ public class ArquivoAgenda {
 				Contato contato = new Contato(tokens[0], tokens[1]);
 				contatos.add(contato);
 			}
-
 			return contatos;
 		} catch (FileNotFoundException e) {
 			return contatos;

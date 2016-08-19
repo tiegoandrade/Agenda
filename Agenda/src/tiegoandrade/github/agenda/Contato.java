@@ -6,8 +6,8 @@ import java.util.regex.Pattern;
 /**
  * Classe que representa os contatos de uma agenda.
  * 
+ * @version 1.0 18-08-2016
  * @author Tiego
- *
  */
 public class Contato {
 
@@ -20,10 +20,8 @@ public class Contato {
 	/**
 	 * Construtor
 	 * 
-	 * @param nome
-	 *            Nome do contato
-	 * @param telefone
-	 *            Telefone do contato
+	 * @param nome Nome do contato
+	 * @param telefone Telefone do contato
 	 */
 	public Contato(String nome, String telefone) {
 		this.nome = nome;
@@ -53,8 +51,7 @@ public class Contato {
 	/**
 	 * Valida os dados de um determinado contato.
 	 * 
-	 * @throws AgendaException
-	 *             Lançada se ocorrer alguma falha na validação
+	 * @throws AgendaException Lançada se ocorrer alguma falha na validação
 	 */
 	public void validarDados() throws AgendaException {
 		validarNome();
@@ -64,8 +61,7 @@ public class Contato {
 	/**
 	 * Valida o nome de um contato.
 	 * 
-	 * @throws AgendaException
-	 *             Lançada se o nome de um contato for vazio.
+	 * @throws AgendaException Lançada se o nome de um contato for vazio.
 	 */
 	private void validarNome() throws AgendaException {
 		if (nome == null || nome.trim().length() == 0) {
@@ -77,11 +73,10 @@ public class Contato {
 	 * Valida o telefone de um contato. O formato do telefone deve ser o
 	 * seguinte: 'XXXX-XXXX'.
 	 * 
-	 * @throws AgendaException
-	 *             Lançada se expressão regular não combinar com o telefone
-	 *             informado
+	 * @throws AgendaException Lançada se expressão regular não combinar com 
+	 * 						   o telefone informado
 	 */
-	private void validarTelefone() throws AgendaException {
+	public void validarTelefone() throws AgendaException {
 		String regex = "\\d\\d\\d\\d-\\d\\d\\d\\d";
 		Pattern p = Pattern.compile(regex);
 		Matcher m = p.matcher(telefone);

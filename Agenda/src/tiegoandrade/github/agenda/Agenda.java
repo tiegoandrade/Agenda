@@ -12,10 +12,12 @@ import java.util.regex.Pattern;
 /**
  * Classe que representa a agenda de contatos.
  * 
+ * @version 1.0 18-08-2016
  * @author Tiego
  *
  */
 public class Agenda {
+
 	/**
 	 * Map que armazena como chave o nome do contato e como valor o objeto de
 	 * contato.
@@ -35,9 +37,10 @@ public class Agenda {
 	/**
 	 * Construtor
 	 * 
-	 * @throws IOException
+	 * @throws IOException Lançada se ocorrer alguma exceção de entrada e saída.
 	 */
 	public Agenda() throws IOException {
+		
 		// Lê os contatos que estão no arquivo com os registros da agenda.
 		List<Contato> contatos = arquivo.ler();
 
@@ -54,9 +57,9 @@ public class Agenda {
 	/**
 	 * Insere um novo contato na agenda.
 	 * 
-	 * @param contato
-	 * @throws AgendaException
-	 * @throws IOException
+	 * @param contato Nome e telefone do contato que será inserido na agenda.
+	 * @throws AgendaException Lançada se o contato já existir na agenda.
+	 * @throws IOException Lançada se ocorrer alguma exceção de entrada e saída.
 	 */
 	public void inserir(Contato contato) throws AgendaException, IOException {
 
@@ -104,9 +107,9 @@ public class Agenda {
 	/**
 	 * Exclui um contato da agenda
 	 * 
-	 * @param nome
-	 * @throws AgendaException
-	 * @throws IOException
+	 * @param nome Nome do contato que será excluído.
+	 * @throws AgendaException Lançada se o contato não existir.
+	 * @throws IOException Lançada se ocorrer alguma exceção de entrada e saída.
 	 */
 	public void excluir(String nome) throws AgendaException, IOException {
 
@@ -116,7 +119,7 @@ public class Agenda {
 		// Remove o contato da map com o nome completo e o telefone do contato.
 		contatosMap.remove(nome);
 
-		// Remove o contato do map com a letra inicial do nome do contato.
+		// Remove o contato do map que contém a letra inicial do nome do contato.
 		contatosPorLetrasMap.remove(nome.toUpperCase().charAt(0));
 
 		// Atualiza o arquivo de contatos.
@@ -126,10 +129,9 @@ public class Agenda {
 	/**
 	 * Altera um contato na agenda.
 	 * 
-	 * @param contato
-	 *            Contato a ser alterado.
-	 * @throws AgendaException
-	 * @throws IOException
+	 * @param contato Contato a ser alterado.
+	 * @throws AgendaException Lançada se o contato não existir.
+	 * @throws IOException Lançada se ocorrer alguma exceção de entrada e saída.
 	 */
 	public void alterar(Contato contato) throws AgendaException, IOException {
 
@@ -149,10 +151,8 @@ public class Agenda {
 	/**
 	 * Verifica se determinado contato já existe.
 	 * 
-	 * @param nome
-	 *            Nome do contato a ser verificado
-	 * @throws AgendaException
-	 *             Lançada caso o contato não exista
+	 * @param nome Nome do contato a ser verificado
+	 * @throws AgendaException Lançada caso o contato não exista
 	 */
 	private void verificarExistenciaContato(String nome) throws AgendaException {
 
@@ -165,8 +165,7 @@ public class Agenda {
 	/**
 	 * Obtém uma lista de contatos que iniciam com determinada letra.
 	 * 
-	 * @param letra
-	 *            Letra a ser usada na busca pelos contatos.
+	 * @param letra Letra a ser usada na busca pelos contatos.
 	 * @return Lista de contatos que atende ao critério estabelecido
 	 */
 	public List<Contato> listarContatosPorLetra(char letra) {
@@ -182,8 +181,7 @@ public class Agenda {
 	/**
 	 * Obtém uma lista de contatos com base em parte do nome.
 	 * 
-	 * @param parteNome
-	 *            Parte do nome a ser procurada
+	 * @param parteNome Parte do nome a ser procurada
 	 * @return Lista de contatos que atende ao critério especificado
 	 */
 	public List<Contato> listarContatosPorParteNome(String parteNome) {
@@ -219,7 +217,6 @@ public class Agenda {
 				contatosEncontrados.add(contato);
 			}
 		}
-		
 		return contatosEncontrados;
 	}
 }
